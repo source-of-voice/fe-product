@@ -80,8 +80,7 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
   const body = await parseBody(response);
 
   if (!response.ok) {
-    const message = typeof body === 'string' ? body : `Request failed with status ${response.status}`;
-    throw new ApiError(response.status, message, body);
+    throw new ApiError(response.status, 'Request failed', body);
   }
 
   return body as T;
@@ -99,7 +98,8 @@ export async function apiBlob(path: string): Promise<Blob> {
   });
 
   if (!response.ok) {
-    throw new ApiError(response.status, `Request failed with status ${response.status}`);
+    const body = await parseBody(response);
+    throw new ApiError(response.status, 'Request failed', body);
   }
 
   return response.blob();

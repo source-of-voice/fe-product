@@ -9,6 +9,8 @@ import type {
   AudioTextStatusResponse,
   GenerateWikipediaTextsRequest,
   GenerateWikipediaTextsResponse,
+  ListUserResponse,
+  PageResponse,
   ReviewerAudioSubmissionDetailsResponse,
   Role,
   SliceResponse,
@@ -81,6 +83,9 @@ export const authApi = {
 };
 
 export const adminAuthApi = {
+  users(page = 0, size = 10, sort = 'email,asc') {
+    return apiRequest<PageResponse<ListUserResponse>>(`/auth/admin/users${query({ page, size, sort })}`);
+  },
   assignRole(payload: RolePayload) {
     return apiRequest<string>('/auth/admin/assign/role', {
       method: 'POST',
