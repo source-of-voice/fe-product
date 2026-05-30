@@ -1,0 +1,21 @@
+services:
+  source-of-voice-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: source-of-voice-frontend
+    ports:
+      - "3000:80"
+    environment:
+      # Empty API_BASE_URL makes the browser call /auth, /sofv and /payments on the frontend origin.
+      API_BASE_URL: ""
+      # Nginx forwards those prefixes to your Spring Cloud API Gateway.
+      # Change the host if your gateway service has a different Docker Compose name.
+      API_GATEWAY_URL: "http://api-gateway:8080"
+    networks:
+      - sourceofvoice
+
+networks:
+  sourceofvoice:
+    external: true
+    name: source-of-voice_sourceofvoice
