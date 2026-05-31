@@ -83,24 +83,14 @@ export function getUserFriendlyErrorMessage(error: unknown, t: TFunction): strin
     if (backendMessage) return backendMessage;
 
     switch (error.status) {
-      case 400:
-        return t('errors.badRequest');
-      case 401:
-        return t('errors.unauthorized');
-      case 403:
-        return t('errors.forbidden');
-      case 404:
-        return t('errors.notFound');
-      case 409:
-        return t('errors.conflict');
-      case 413:
-        return t('errors.fileTooLarge');
-      case 415:
-        return t('errors.unsupportedMedia');
-      case 422:
-        return t('errors.validation');
-      case 429:
-        return t('errors.tooManyRequests');
+      case 400: return t('errors.badRequest');
+      case 401: return t('errors.unauthorized');
+      case 403: return t('errors.forbidden');
+      case 404: return t('errors.notFound');
+      case 413: return t('errors.fileTooLarge');
+      case 415: return t('errors.unsupportedMedia');
+      case 429: return t('errors.tooManyRequests');
+      case 503: return t('errors.serviceUnavailable');
       default:
         if (error.status >= 500) return t('errors.server');
         return t('errors.unexpected');

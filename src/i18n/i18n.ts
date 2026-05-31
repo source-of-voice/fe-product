@@ -147,6 +147,7 @@ const resources = {
       submission: 'Submission',
       recordingSubmission: 'Recording submission',
       audioTask: 'Audio task',
+
       textBatch: 'Generation batch',
       cannotRemoveUserRole: 'USER is the base role and cannot be removed.',
       statusLabels: {
@@ -183,6 +184,7 @@ const resources = {
       page: 'Page',
       users: 'users',
       errors: {
+        serviceUnavailable: 'The external service is temporarily unavailable. Please try again later.',
         badRequest: 'Check the entered data and try again.',
         unauthorized: 'Your session has expired. Please log in again.',
         forbidden: 'You do not have permission to perform this action.',
@@ -388,7 +390,8 @@ const resources = {
         unsupportedMedia: 'Ten format pliku nie jest obsługiwany.',
         tooManyRequests: 'Za dużo prób. Odczekaj chwilę i spróbuj ponownie.',
         server: 'Serwer nie mógł wykonać tej akcji. Spróbuj ponownie później.',
-        unexpected: 'Coś poszło nie tak. Spróbuj ponownie.'
+        unexpected: 'Coś poszło nie tak. Spróbuj ponownie.',
+        serviceUnavailable: 'Zewnętrzna usługa jest chwilowo niedostępna. Spróbuj ponownie później.'
       }
     }
   }

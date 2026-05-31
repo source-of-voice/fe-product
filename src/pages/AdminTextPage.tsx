@@ -74,7 +74,6 @@ export function AdminTextPage({ setNotice }: { setNotice: (notice: Notice) => vo
           <div>
             <p className="eyebrow-soft">{t('adminTexts')}</p>
             <h2>{t('generateTexts')}</h2>
-            <p className="section-help">{t('generateTextsHelp')}</p>
           </div>
         </div>
         <div className="admin-form-grid">
@@ -87,7 +86,7 @@ export function AdminTextPage({ setNotice }: { setNotice: (notice: Notice) => vo
         </div>
         <div className="toggle-row">
           <label><input type="checkbox" checked={generatePayload.activateImmediately} onChange={(event) => setGeneratePayload({ ...generatePayload, activateImmediately: event.target.checked })} /> {t('activateImmediately')}</label>
-          <label><input type="checkbox" checked={generatePayload.introOnly} onChange={(event) => setGeneratePayload({ ...generatePayload, introOnly: event.target.checked })} /> {t('introOnly')}</label>
+
         </div>
         <button className="primary-button" onClick={() => run(() => adminTextApi.generate(generatePayload))}><WandSparkles size={18} /><span>{t('generate')}</span></button>
       </section>
