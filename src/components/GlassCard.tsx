@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 interface GlassCardProps {
   title?: string;
@@ -8,7 +8,13 @@ interface GlassCardProps {
   className?: string;
 }
 
-export function GlassCard({ title, eyebrow, action, children, className = '' }: GlassCardProps) {
+export function GlassCard({
+  title,
+  eyebrow,
+  action,
+  children,
+  className = "",
+}: GlassCardProps) {
   return (
     <section className={`glass-card ${className}`}>
       {(title || eyebrow || action) && (

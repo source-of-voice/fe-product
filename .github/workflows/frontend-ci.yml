@@ -1,6 +1,5 @@
 name: frontend-ci.yml
-on:
-  [ push ]
+on: [push]
 jobs:
   Linter:
     name: Check formatting
@@ -14,7 +13,3 @@ jobs:
 
       - name: Run linter
         run: docker run --rm -v ${{ github.workspace }}:/app linter
-
-
-
-

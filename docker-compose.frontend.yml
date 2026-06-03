@@ -11,7 +11,7 @@ services:
       API_BASE_URL: ""
       # Nginx forwards those prefixes to your Spring Cloud API Gateway.
       # Change the host if your gateway service has a different Docker Compose name.
-      API_GATEWAY_URL: "http://api-gateway:8080"
+      API_GATEWAY_URL: "${API_GATEWAY_URL}"
     networks:
       - sourceofvoice
 

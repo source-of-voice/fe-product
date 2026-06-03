@@ -1,4 +1,4 @@
-export type Role = 'USER' | 'REVIEWER' | 'ADMIN';
+export type Role = "USER" | "REVIEWER" | "ADMIN";
 
 export interface AuthTokens {
   accessToken: string;
@@ -25,15 +25,20 @@ export interface SliceResponse<T> {
 }
 
 export type AudioSubmissionStatus =
-  | 'SUBMITTED'
-  | 'NEEDS_REVIEW'
-  | 'IN_REVIEW'
-  | 'APPROVED_FOR_PAYMENT'
-  | 'REJECTED'
+  | "SUBMITTED"
+  | "NEEDS_REVIEW"
+  | "IN_REVIEW"
+  | "APPROVED_FOR_PAYMENT"
+  | "REJECTED"
   | string;
 
-export type AudioTextStatus = 'DRAFT' | 'ACTIVE' | 'DISABLED' | 'ARCHIVED' | string;
-export type AudioTextBatchStatus = 'RUNNING' | 'FINISHED' | 'FAILED' | string;
+export type AudioTextStatus =
+  | "DRAFT"
+  | "ACTIVE"
+  | "DISABLED"
+  | "ARCHIVED"
+  | string;
+export type AudioTextBatchStatus = "RUNNING" | "FINISHED" | "FAILED" | string;
 
 export interface AudioSubmissionResponse {
   id: number;

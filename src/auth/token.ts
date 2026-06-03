@@ -1,7 +1,7 @@
-import type { AuthTokens, JwtPayload, Role } from '../types/domain';
+import type { AuthTokens, JwtPayload, Role } from "../types/domain";
 
-const ACCESS_TOKEN_KEY = 'sov.accessToken';
-const REFRESH_TOKEN_KEY = 'sov.refreshToken';
+const ACCESS_TOKEN_KEY = "sov.accessToken";
+const REFRESH_TOKEN_KEY = "sov.refreshToken";
 
 export function saveTokens(tokens: AuthTokens) {
   localStorage.setItem(ACCESS_TOKEN_KEY, tokens.accessToken);
@@ -30,10 +30,10 @@ export function readTokens(): AuthTokens | null {
 
 export function decodeJwt(token: string | null): JwtPayload | null {
   if (!token) return null;
-  const parts = token.split('.');
+  const parts = token.split(".");
   if (parts.length < 2) return null;
   try {
-    const json = atob(parts[1].replace(/-/g, '+').replace(/_/g, '/'));
+    const json = atob(parts[1].replace(/-/g, "+").replace(/_/g, "/"));
     return JSON.parse(decodeURIComponent(escape(json))) as JwtPayload;
   } catch {
     try {
@@ -51,7 +51,7 @@ export function getCurrentUser() {
     userId: payload?.sub ? Number(payload.sub) : null,
     roles,
     tokenVersion: payload?.ver ?? null,
-    expiresAt: payload?.exp ? new Date(payload.exp * 1000) : null
+    expiresAt: payload?.exp ? new Date(payload.exp * 1000) : null,
   };
 }
 
