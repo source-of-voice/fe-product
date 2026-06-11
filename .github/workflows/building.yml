@@ -1,0 +1,61 @@
+name: building.yml
+on:
+  push:
+    paths:
+      - 'Dockerfile'
+      - 'docker-compose.frontend.yml'
+      - 'docker-entrypoint.sh'
+      - '.dockerignore'
+      - 'nginx.conf*'
+      - 'src/**'
+      - 'public/**'
+      - 'index.html'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig*.json'
+      - 'vite.config.ts'
+  pull_request:
+    paths:
+      - 'Dockerfile'
+      - 'docker-compose.frontend.yml'
+      - 'docker-entrypoint.sh'
+      - '.dockerignore'
+      - 'nginx.conf*'
+      - 'src/**'
+      - 'public/**'
+      - 'index.html'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig*.json'
+      - 'vite.config.ts'
+jobs:
+  Container-quality:
+    name: Build, run
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: docker compose -f docker-compose.frontend.yml build
+
+      - name: Run
+        run: docker compose -f docker-compose.frontend.yml up -d
+
+      - name: Healthcheck container with retry from host
+        id: healthcheck-container
+        uses: nick-fields/retry@v3
+        with:
+          max_attempts: 3
+          command: curl -f http://localhost
+
+      - name: Show container logs on failure
+        if: failure()
+        run: docker compose -f docker-compose.frontend.yml logs
+
+      - name: Cleanup
+        if: always()
+        run: docker compose -f docker-compose.frontend.yml down -v
+
+
+
