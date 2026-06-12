@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: "${FE_CONTAINER}:-source-of-voice-fe"
+    container_name: "${FE_CONTAINER:-source-of-voice-fe}"
     ports:
       - "${HOST_PORT:-8000}:${CONTAINER_PORT:-80}"
     environment:
