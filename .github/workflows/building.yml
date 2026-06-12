@@ -11,6 +11,7 @@ on:
       - 'public/**'
       - 'index.html'
       - 'package.json'
+      - 'package-lock.json'
       - 'tsconfig*.json'
       - 'vite.config.ts'
   pull_request:
@@ -24,6 +25,7 @@ on:
       - 'public/**'
       - 'index.html'
       - 'package.json'
+      - 'package-lock.json'
       - 'tsconfig*.json'
       - 'vite.config.ts'
 jobs:
