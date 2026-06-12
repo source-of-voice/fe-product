@@ -10,8 +10,7 @@ services:
       API_BASE_URL: ""
       API_GATEWAY_URL: "${API_GATEWAY_URL:-http://api-gateway:8080}"
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:${CONTAINER_PORT}", "&&",
-              "curl", "-f", "http://localhost:${CONTAINER_PORT}/health" ]
+      test: ["CMD-SHELL", "wget -qO- http://localhost:${CONTAINER_PORT:-80}/ >/dev/null"]
       interval: 1m30s
       timeout: 10s
       retries: 3
