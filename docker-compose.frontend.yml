@@ -8,7 +8,7 @@ services:
       - "${HOST_PORT:-8000}:${CONTAINER_PORT:-80}"
     environment:
       API_BASE_URL: ""
-      API_GATEWAY_URL: "${API_GATEWAY_URL:-http://api-gateway}"
+      API_GATEWAY_URL: "${API_GATEWAY_URL:-http://api-gateway:8080}"
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:${CONTAINER_PORT}", "&&",
               "curl", "-f", "http://localhost:${CONTAINER_PORT}/health" ]
