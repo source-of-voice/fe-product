@@ -17,7 +17,6 @@ on:
       - 'index.html'
       - 'tsconfig*.json'
       - 'package.json'
-      - 'package-lock.json'
       - 'eslint.config.js'
       - 'vite.config.ts'
 jobs:
