@@ -5,7 +5,7 @@ ENV NPM_CONFIG_UPDATE_NOTIFIER=false \
     NPM_CONFIG_FUND=false \
     NPM_CONFIG_AUDIT=false
 
-COPY package.json package-lock.json .npmrc ./
+COPY package.json .npmrc ./
 RUN npm ci --no-audit --no-fund
 
 COPY . .
